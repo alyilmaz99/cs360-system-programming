@@ -35,5 +35,6 @@
     "*.embeddedhtml": "html",
     "stdio.h": "c",
     "stdlib.h": "c"
-  }
+  },
+  "cSpell.words": ["ekleyemeiyoruz"]
 }
