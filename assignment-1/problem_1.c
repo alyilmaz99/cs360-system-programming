@@ -33,19 +33,93 @@ int maxProfit(int *prices, int pricesSize, int *buyDays, int *sellDays);
 int maxProfitOneTransaction(int *prices, int pricesSize, int *buyDays, int *sellDays);
 int convertCharToIntArray(int* array4);
 
+int maxValueFind(int *testArray, int size){
+    int maxValue = 0;
+    for (int i = 0; i < size; i++)
+    {
+
+        if (maxValue < testArray[i])
+        {
+            maxValue = testArray[i];
+        }
+    }
+    return maxValue;
+}
+int minValueFind(int *testArray, int size){
+    int minValue = 100;
+    for (int i = 0; i < size; i++)
+    {
+        if (minValue > testArray[i])
+        {
+            
+            minValue = testArray[i];
+        }
+    }
+    return minValue;
+}
+
 int main()
 {
 
     int temp[30];
     int numberOfPrice= convertCharToIntArray(temp);
-
+    /*
     for (int i = 0; i < numberOfPrice; i++)
     {
         printf("%d\n", temp[i]);
     }
-    int buyDays3[1] = {0};
-    int sellDays3[1] = {4};
-    printf("-----------------\nmaxProfit temp: %d\n", maxProfitOneTransaction(temp, numberOfPrice,buyDays3, sellDays3));
+    */
+  
+    int countArraySize = 0;
+    int countArraySize2 = 0;
+    int buyTest[2];
+    int buyTest1[1] = {0};
+    int sellTest1[1] = {0};
+    bool isSelled = true;
+    //int maxValue = maxValueFind(testArray,5);
+    //int minValue = minValueFind(testArray,5);
+    //printf("max Value: %d\n", maxValue);
+    //printf("minValue: %d\n", minValue);
+
+    for (int i = 0; i < numberOfPrice; i++)
+    {  
+       if (temp[i] < temp[i +1] && isSelled == true && countArraySize<2)
+       {
+            
+            for (int j = 0; j < numberOfPrice; j++)
+            {
+                if (buyTest1[0] > sellTest1[j])
+                {
+                    countArraySize++;
+                    buyTest1[0] = i;
+                    isSelled = false;
+                }else{
+                    countArraySize++;
+                    buyTest1[0] = i;
+                    isSelled = false;
+                }            
+            }
+       }
+       if (temp[i] < temp[i+1] && isSelled != true && countArraySize2 <2)
+       {
+            for (int j = 0; j < numberOfPrice; j++)
+            {
+                if (sellTest1[0] < temp[j])
+                { 
+                    countArraySize2++;
+                    sellTest1[0] = j;
+                    isSelled = true;
+                }
+            }      
+       }
+    }
+    for (int i = 0; i < 1; i++)
+    {
+       printf("arrayBuyDays: %d\n", buyTest1[i]);
+       printf("arraySellDays: %d\n", sellTest1[i]);
+    }
+   
+    printf("-----------------\nmaxProfit temp: %d\n", maxProfitOneTransaction(temp, numberOfPrice,buyTest1, sellTest1));
 
     /*
     int temp2[30];
@@ -67,7 +141,7 @@ int convertCharToIntArray(int* array4){
     printf("\e[32m");
         printf("****************************************************\n*********************\e[39mALI YILMAZ\e[32m*********************\n*********************\e[39m180101021\e[32m**********************\n****************************************************\n");
 
-    printf("please enter prices: ");
+    printf("Please enter prices array like [1,2,3,4,5] after that press EOF(in linux use CTRL+D): ");
     for (int i = 0; i < 30; i++)
     {
         scanf("%c", &array_numb[i]);
