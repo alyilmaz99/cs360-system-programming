@@ -23,8 +23,9 @@ int main(){
     printf("dizi value address:        %d\n",&dizi[0]);
     int *pointer2;
     pointer2 = dizi;
-    pointer2++;
-    printf("pointer address with dizi: %d\n", pointer2);
+    
+    printf("pointer2 address with dizi: %d\n", pointer2);
+    printf("pointer2 value with dizi: %d\n", pointer2[2]);
     int j = 20;
     int *pointer3;
     pointer3 = &j;
