@@ -1,3 +1,29 @@
+/*H**********************************************************************
+* FILENAME :        problem_1.c             
+*
+* DESCRIPTION :
+*       Disardan liste seklinde aldigimiz input degerini, en olasi degerlere gore satis yaptirma.
+*
+* PUBLIC FUNCTIONS :
+*       int     maxProfit(int *prices, int pricesSize, int *buyDays, int *sellDays)
+*       int     maxProfitOneTransaction(int *prices, int pricesSize, int *buyDays, int *sellDays)
+*       int     convertCharToIntArray(int* array4)
+*
+* NOTES :
+*       Listeyi : PDF de belirtildigi gibi [3,3,5,0,0,3,1,4] sekklinde vermemiz gerekmekte.
+*       Kod bir EOF beklemekte Linux isletim sisteminde CTRL+D ile bu kodu durdurum diger islemlere devam ettirebilirsiniz.
+*       See IMS FM0121 for detailed description.
+*
+*       Copyright ALI YILMAZ 2023.  All rights reserved.
+*
+* AUTHOR :    ALI YILMAZ        START DATE :    25 MARC 23
+*
+* CHANGES :
+*       WILL BE UPDATED ALI YILMAZ 26 MARCH 23
+* 
+*
+*H*/
+
 #include<stdlib.h>
 #include<stdio.h>
 #include <stdbool.h>
@@ -5,26 +31,72 @@
 #include <string.h>
 int maxProfit(int *prices, int pricesSize, int *buyDays, int *sellDays);
 int maxProfitOneTransaction(int *prices, int pricesSize, int *buyDays, int *sellDays);
+int convertCharToIntArray(int* array4);
 
 int main()
 {
 
-        
-    int array[5] = {1,0,3,3,5};
-    int buyDays[1] = {1};
-    int sellDays[1] = {4};
+    int temp[30];
+    int numberOfPrice= convertCharToIntArray(temp);
 
+    for (int i = 0; i < numberOfPrice; i++)
+    {
+        printf("%d\n", temp[i]);
+    }
+    int buyDays3[1] = {0};
+    int sellDays3[1] = {4};
+    printf("-----------------\nmaxProfit temp: %d\n", maxProfitOneTransaction(temp, numberOfPrice,buyDays3, sellDays3));
 
-    printf("-----------------\nmaxProfit1: %d\n", maxProfitOneTransaction(array, 5,buyDays, sellDays));
-    int array2[7] = {3,3,5,0,3,1,6};
+    /*
+    int temp2[30];
+    int numberOfPrice2 = convertCharToIntArray(temp2);
+
     int buyDays2[2] = {3,5};
     int sellDays2[2] = {4,6};
-    
 
-    printf("-----------------\nmaxProfit2: %d\n", maxProfit(array2, 8, buyDays2, sellDays2));
-
+    printf("-----------------\nmaxProfit2: %d\n", maxProfit(temp2, numberOfPrice2, buyDays2, sellDays2));
+    */
     return EXIT_SUCCESS;
 }
+
+int convertCharToIntArray(int* array4){
+    char array_numb[30];
+    int array3[30];
+    char *ptrSplit;
+    int count = 0;
+    printf("\e[32m");
+        printf("****************************************************\n*********************\e[39mALI YILMAZ\e[32m*********************\n*********************\e[39m180101021\e[32m**********************\n****************************************************\n");
+
+    printf("please enter prices: ");
+    for (int i = 0; i < 30; i++)
+    {
+        scanf("%c", &array_numb[i]);
+    }
+
+    for (int i = 0; i < 30; i++)
+    {
+        
+        for (int j = i; j < 30; j++)
+        {
+           if(isdigit(array_numb[j]))
+           {
+               // printf("i deger: %d \n", i);
+                //printf("isDigit: %c\n", array_numb[j]);
+                array3[count] = array_numb[j] - '0';
+               // printf("array3 %d: %d\n", count, array3[count]);
+                count++;
+           }
+           break;
+        }
+    }
+    for (int i = 0; i < count; i++)
+    {
+        array4[i] = array3[i];
+    }
+
+    return  count;
+}
+
 int maxProfitOneTransaction(int *prices, int pricesSize, int *buyDays, int *sellDays){
     int maxPrice = 0;
     int minPrice = 0;
