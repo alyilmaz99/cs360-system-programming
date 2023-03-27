@@ -51,7 +51,7 @@ int main() {
     
     */
     int bigArea = areaFind(heights, heightsSize);
-    printf("%d\n", bigArea);
+    printf("RESULT : %d\n", bigArea);
     return 0;
 }
 int areaFind(int *heights, int heightsSize) {
