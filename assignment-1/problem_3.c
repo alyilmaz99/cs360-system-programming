@@ -32,15 +32,40 @@
 #include <ctype.h>   
 #include <string.h>
 
-struct TreeNode{
+typedef struct TreeNode{
     int val;
     struct TreeNode *left;
     struct TreeNode *right;
+}treeNode;
+
+ struct TreeNode *talloc(int data)
+{
+    
 };
 
+void addNode(int *arrayNode){
+
+    
+}
+
+void preOrder(struct TreeNode *root){
+
+}
+void inOrder(struct TreeNode *root){
+
+}
+
+int delTree(struct TreeNode *root){
+
+}
+
+int maxPathSum(struct TreeNode * root){
+
+}
 
 
 int main(){
 
+    int root = { 1, 2, 3 };
     return EXIT_SUCCESS;
 }
