@@ -40,6 +40,7 @@ int main() {
     int heights[20];
     
     int heightsSize = convertCharToIntArray(heights);
+    /*
     for (int i = 0; i < heightsSize; i++)
     {
        printf("heights: %d\n", heights[i]);
@@ -48,38 +49,46 @@ int main() {
     printf("heightSize: %d\n", heightsSize);
     
     
-    
+    */
     int bigArea = areaFind(heights, heightsSize);
     printf("%d\n", bigArea);
     return 0;
 }
-
-
 int areaFind(int *heights, int heightsSize) {
     int bigArea = 0;
-    for (int i = 1; i < heightsSize; i++) {
-        int selectedArea;
-        if (heights[i-1] * 2 < heights[i]) {
-            selectedArea = heights[i] ;
-        } 
-        else if(heights[i-1] <= heights[i]) {
-            selectedArea = heights[i-1] * 2 ;
-        } 
+    for (int i = 0; i < heightsSize; i++) {
+        int selectedArea = heights[i];
+        for (int j = i - 1; j >= 0; j--) {
+            if (heights[j] >= heights[i]) {
+                selectedArea += heights[i];
+            } else {
+                break;
+            }
+        }
+        for (int j = i + 1; j < heightsSize; j++) {
+            if (heights[j] >= heights[i]) {
+                selectedArea += heights[i];
+            } else {
+                break;
+            }
+        }
         if (selectedArea > bigArea) {
             bigArea = selectedArea;
         }
     }
     return bigArea;
 }
+
+
 int convertCharToIntArray(int* array4){
     char array_numb[30];
     int array3[30];
     char *ptrSplit;
     int count = 0;
     printf("\e[32m");
-        printf("****************************************************\n*********************\e[39mALI YILMAZ\e[32m*********************\n*********************\e[39m180101021\e[32m**********************\n****************************************************\n");
+        printf("****************************************************\n*********************\e[39mALI YILMAZ\e[32m*********************\n*********************\e[39m180101021\e[32m**********************\n*********************\e[39mPROBLEM_2\e[32m******************************\n");
 
-    printf("Please enter prices array like [1,2,3,4,5] after that press EOF(in linux use CTRL+D): ");
+    printf("Please enter prices array like [2,1,5,6,7,8,9] after that press EOF(in linux use CTRL+D): ");
     for (int i = 0; i < 30; i++)
     {
         scanf("%c", &array_numb[i]);
